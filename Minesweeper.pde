@@ -1,7 +1,7 @@
 
 
 import de.bezier.guido.*;
-//Declare and initialize NUM_ROWS and NUM_COLS = 20
+public final int NUM_ROWS = 20, NUM_COLS = 20;
 private MSButton[][] buttons; //2d array of minesweeper buttons
 private ArrayList <MSButton> bombs; //ArrayList of just the minesweeper buttons that are mined
 
@@ -15,7 +15,12 @@ void setup ()
     
     //your code to declare and initialize buttons goes here
     
-    
+    buttons = new MSButton[NUM_ROWS][NUM_COLS];
+    for(int r = 0; r < NUM_ROWS; r++) {
+        for(int c = 0; c < NUM_COLS; c++) {
+            buttons[r][c] = new MSButton(r, c);
+        }
+    }
     
     setBombs();
 }
