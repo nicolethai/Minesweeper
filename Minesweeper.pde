@@ -109,13 +109,19 @@ public class MSButton
     }
     public boolean isValid(int r, int c)
     {
-        //your code here
+        if((r>=0 && r<=height) && (c>=0 && c<=width)) {
+            return true;
+        }
         return false;
     }
     public int countBombs(int row, int col)
     {
         int numBombs = 0;
         //your code here
+        if(buttons[row][col].isValid()) // need check 8 neighbors around 
+        {
+
+        }
         return numBombs;
     }
 }
