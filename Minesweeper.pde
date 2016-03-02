@@ -86,6 +86,7 @@ public class MSButton
     {
         clicked = true;
         //your code here
+        
     }
 
     public void draw () 
@@ -118,10 +119,57 @@ public class MSButton
     {
         int numBombs = 0;
         //your code here
-        if(buttons[row][col].isValid()) // need check 8 neighbors around 
-        {
-
+        // checks 8 neighbors around
+        for(int r = -1; r <= 1; r++) {
+            for(int c = -1; c <= 1; c++) {
+                if(row+r!=row && col+c!=col && buttons[row+r][col+c].isValid(row+r, col+c) && bombs.contains(buttons[row+r][col+c]))
+                    numBombs++;
+            }
         }
+
+/*        // need check 8 neighbors around --> NEED CONDENSE
+        if(buttons[row][col+1].isValid(row, col+1)) // checks right box
+        {
+            if(bombs.contains(buttons[row][col+1]))
+                numBombs++;
+        }
+        if(buttons[row-1][col+1].isValid(row-1, col+1)) // checks right top box
+        {
+            if(bombs.contains(buttons[row-1][col+1]))
+                numBombs++;
+        }
+        if(buttons[row+1][col+1].isValid(row+1, col+1)) // checks right bottom box
+        {
+            if(bombs.contains(buttons[row+1][col+1]))
+                numBombs++;
+        }
+        if(buttons[row][col-1].isValid(row, col-1)) // checks left box
+        {
+            if(bombs.contains(buttons[row][col-1]))
+                numBombs++;
+        }
+        if(buttons[row-1][col-1].isValid(row-1, col-1)) // checks left top box
+        {
+            if(bombs.contains(buttons[row-1][col-1]))
+                numBombs++;
+        }
+        if(buttons[row+1][col-1].isValid(row+1, col-1)) // checks left bottom box
+        {
+            if(bombs.contains(buttons[row+1][col-1]))
+                numBombs++;
+        }
+        if(buttons[row-1][col].isValid(row-1, col)) // checks top box
+        {
+            if(bombs.contains(buttons[row-1][col]))
+                numBombs++;
+        }
+        if(buttons[row+1][col].isValid(row+1, col)) // checks bottom box
+        {
+            if(bombs.contains(buttons[row+1][col]))
+                numBombs++;
+        }
+*/
+
         return numBombs;
     }
 }
