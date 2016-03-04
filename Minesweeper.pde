@@ -86,6 +86,7 @@ public class MSButton
     {
         clicked = true;
         //your code here
+        
         int tf = (int)((Math.random()*2)-1);
         if(keyPressed) {
             if(tf == -1)
@@ -102,7 +103,7 @@ public class MSButton
         else {
             for(int rr = -1; rr <= 1; rr++) {
                 for(int cc = -1; cc <= 1; cc++) {
-                    if(r+rr!=r && c+cc!=c && buttons[r+rr][c+cc].isValid(r+rr, c+cc) && !buttons[r+rr][c+cc].isClicked())
+                    if(r+rr!=r && c+cc!=c && buttons[r+rr][c+cc].isValid(r+rr, c+cc) && (buttons[r+rr][c+cc].isClicked()==false))
                         buttons[r+rr][c+cc].mousePressed();
                 }
             }
@@ -140,55 +141,47 @@ public class MSButton
         int numBombs = 0;
         //your code here
         // checks 8 neighbors around
-        for(int r = -1; r <= 1; r++) {
+/*        for(int r = -1; r <= 1; r++) {
             for(int c = -1; c <= 1; c++) {
                 if(row+r!=row && col+c!=col && buttons[row+r][col+c].isValid(row+r, col+c) && bombs.contains(buttons[row+r][col+c]))
                     numBombs++;
             }
         }
-
-/*        // need check 8 neighbors around --> NEED CONDENSE
-        if(buttons[row][col+1].isValid(row, col+1)) // checks right box
-        {
-            if(bombs.contains(buttons[row][col+1]))
-                numBombs++;
-        }
-        if(buttons[row-1][col+1].isValid(row-1, col+1)) // checks right top box
-        {
-            if(bombs.contains(buttons[row-1][col+1]))
-                numBombs++;
-        }
-        if(buttons[row+1][col+1].isValid(row+1, col+1)) // checks right bottom box
-        {
-            if(bombs.contains(buttons[row+1][col+1]))
-                numBombs++;
-        }
-        if(buttons[row][col-1].isValid(row, col-1)) // checks left box
-        {
-            if(bombs.contains(buttons[row][col-1]))
-                numBombs++;
-        }
-        if(buttons[row-1][col-1].isValid(row-1, col-1)) // checks left top box
-        {
-            if(bombs.contains(buttons[row-1][col-1]))
-                numBombs++;
-        }
-        if(buttons[row+1][col-1].isValid(row+1, col-1)) // checks left bottom box
-        {
-            if(bombs.contains(buttons[row+1][col-1]))
-                numBombs++;
-        }
-        if(buttons[row-1][col].isValid(row-1, col)) // checks top box
-        {
-            if(bombs.contains(buttons[row-1][col]))
-                numBombs++;
-        }
-        if(buttons[row+1][col].isValid(row+1, col)) // checks bottom box
-        {
-            if(bombs.contains(buttons[row+1][col]))
-                numBombs++;
-        }
 */
+        // need check 8 neighbors around --> NEED CONDENSE
+        if(buttons[row][col+1].isValid(row, col+1) && (bombs.contains(buttons[row][col+1]))) // checks right box
+        {
+            numBombs++;
+        }
+        if(buttons[row-1][col+1].isValid(row-1, col+1) && (bombs.contains(buttons[row-1][col+1]))) // checks right top box
+        {
+            numBombs++;
+        }
+        if(buttons[row+1][col+1].isValid(row+1, col+1) && bombs.contains(buttons[row+1][col+1])) // checks right bottom box
+        {
+            numBombs++;
+        }
+        if(buttons[row][col-1].isValid(row, col-1) && (bombs.contains(buttons[row][col-1]))) // checks left box
+        {
+            numBombs++;
+        }
+        if(buttons[row-1][col-1].isValid(row-1, col-1) && (bombs.contains(buttons[row-1][col-1]))) // checks left top box
+        {
+            numBombs++;
+        }
+        if(buttons[row+1][col-1].isValid(row+1, col-1) && (bombs.contains(buttons[row+1][col-1]))) // checks left bottom box
+        {
+            numBombs++;
+        }
+        if(buttons[row-1][col].isValid(row-1, col) && (bombs.contains(buttons[row-1][col]))) // checks top box
+        {
+            numBombs++;
+        }
+        if(buttons[row+1][col].isValid(row+1, col) && (bombs.contains(buttons[row+1][col]))) // checks bottom box
+        {
+            numBombs++;
+        }
+
 
         return numBombs;
     }
