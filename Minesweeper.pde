@@ -4,6 +4,7 @@ import de.bezier.guido.*;
 public final int NUM_ROWS = 20, NUM_COLS = 20;
 private MSButton[][] buttons; //2d array of minesweeper buttons
 private ArrayList <MSButton> bombs = new ArrayList <MSButton>(); //ArrayList of just the minesweeper buttons that are mined
+public final int NUM_BOMBS = 5;
 
 void setup ()
 {
@@ -22,7 +23,10 @@ void setup ()
         }
     }
     
-    setBombs();
+    for(int n = 1; n <= NUM_BOMBS; n++) {
+        setBombs();
+    }
+    
 }
 public void setBombs()
 {
@@ -101,12 +105,48 @@ public class MSButton
             setLabel(""+countBombs(r,c));
         }
         else {
+
             for(int rr = -1; rr <= 1; rr++) {
                 for(int cc = -1; cc <= 1; cc++) {
-                    if(r+rr!=r && c+cc!=c && buttons[r+rr][c+cc].isValid(r+rr, c+cc) && (buttons[r+rr][c+cc].isClicked()==false))
+                    if(buttons[r+rr][c+cc].isValid(r+rr, c+cc) && (buttons[r+rr][c+cc].isClicked()==false) && !bombs.contains(buttons[r+rr][c+cc]))
                         buttons[r+rr][c+cc].mousePressed();
                 }
             }
+
+/*
+            if(buttons[r][c+1].isValid(r, c+1) && (buttons[r][c+1].isClicked()==false) && !bombs.contains(buttons[r][c+1])) // checks right box
+            {
+                buttons[r][c+1].mousePressed();
+            }
+            if(buttons[r-1][c+1].isValid(r-1, c+1) && (buttons[r-1][c+1].isClicked()==false) && !bombs.contains(buttons[r-1][c+1])) // checks right top box
+            {
+                buttons[r-1][c+1].mousePressed();
+            }
+            if(buttons[r+1][c+1].isValid(r+1, c+1) && (buttons[r+1][c+1].isClicked()==false) && !bombs.contains(buttons[r+1][c+1])) // checks right bottom box
+            {
+                buttons[r+1][c+1].mousePressed();
+            }
+            if(buttons[r][c-1].isValid(r, c-1) && (buttons[r][c-1].isClicked()==false) && !bombs.contains(buttons[r][c-1])) // checks left box
+            {
+                buttons[r][c-1].mousePressed();
+            }
+            if(buttons[r-1][c-1].isValid(r-1, c-1) && (buttons[r-1][c-1].isClicked()==false) && !bombs.contains(buttons[r-1][c-1])) // checks left top box
+            {
+                buttons[r-1][c-1].mousePressed();
+            }
+            if(buttons[r+1][c-1].isValid(r+1, c-1) && (buttons[r+1][c-1].isClicked()==false) && !bombs.contains(buttons[r+1][c-1])) // checks left bottom box
+            {
+                buttons[r+1][c-1].mousePressed();
+            }
+            if(buttons[r-1][c].isValid(r-1, c) && (buttons[r-1][c].isClicked()==false) && !bombs.contains(buttons[r-1][c])) // checks top box
+            {
+                buttons[r-1][c].mousePressed();
+            }
+            if(buttons[r+1][c].isValid(r+1, c) && (buttons[r+1][c].isClicked()==false) && !bombs.contains(buttons[r+1][c])) // checks bottom box
+            {
+                buttons[r+1][c].mousePressed();
+            }
+*/
         }
     }
 
@@ -141,14 +181,14 @@ public class MSButton
         int numBombs = 0;
         //your code here
         // checks 8 neighbors around
-/*        for(int r = -1; r <= 1; r++) {
+        for(int r = -1; r <= 1; r++) {
             for(int c = -1; c <= 1; c++) {
-                if(row+r!=row && col+c!=col && buttons[row+r][col+c].isValid(row+r, col+c) && bombs.contains(buttons[row+r][col+c]))
+                if(buttons[row+r][col+c].isValid(row+r, col+c) && bombs.contains(buttons[row+r][col+c]))
                     numBombs++;
             }
         }
-*/
-        // need check 8 neighbors around --> NEED CONDENSE
+
+/*        // need check 8 neighbors around --> NEED CONDENSE
         if(buttons[row][col+1].isValid(row, col+1) && (bombs.contains(buttons[row][col+1]))) // checks right box
         {
             numBombs++;
@@ -181,7 +221,7 @@ public class MSButton
         {
             numBombs++;
         }
-
+*/
 
         return numBombs;
     }
