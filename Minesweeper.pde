@@ -105,48 +105,56 @@ public class MSButton
             setLabel(""+countBombs(r,c));
         }
         else {
-
+/*
             for(int rr = -1; rr <= 1; rr++) {
                 for(int cc = -1; cc <= 1; cc++) {
                     if(buttons[r+rr][c+cc].isValid(r+rr, c+cc) && (buttons[r+rr][c+cc].isClicked()==false) && !bombs.contains(buttons[r+rr][c+cc]))
                         buttons[r+rr][c+cc].mousePressed();
                 }
             }
+*/
 
-/*
             if(buttons[r][c+1].isValid(r, c+1) && (buttons[r][c+1].isClicked()==false) && !bombs.contains(buttons[r][c+1])) // checks right box
             {
                 buttons[r][c+1].mousePressed();
+                System.out.println("checks right box");
             }
             if(buttons[r-1][c+1].isValid(r-1, c+1) && (buttons[r-1][c+1].isClicked()==false) && !bombs.contains(buttons[r-1][c+1])) // checks right top box
             {
                 buttons[r-1][c+1].mousePressed();
+                System.out.println("checks right top box");
             }
             if(buttons[r+1][c+1].isValid(r+1, c+1) && (buttons[r+1][c+1].isClicked()==false) && !bombs.contains(buttons[r+1][c+1])) // checks right bottom box
             {
                 buttons[r+1][c+1].mousePressed();
+                System.out.println("checks right bottom box");
             }
             if(buttons[r][c-1].isValid(r, c-1) && (buttons[r][c-1].isClicked()==false) && !bombs.contains(buttons[r][c-1])) // checks left box
             {
                 buttons[r][c-1].mousePressed();
+                System.out.println("checks left box");
             }
             if(buttons[r-1][c-1].isValid(r-1, c-1) && (buttons[r-1][c-1].isClicked()==false) && !bombs.contains(buttons[r-1][c-1])) // checks left top box
             {
                 buttons[r-1][c-1].mousePressed();
+                System.out.println("checks left top box");
             }
             if(buttons[r+1][c-1].isValid(r+1, c-1) && (buttons[r+1][c-1].isClicked()==false) && !bombs.contains(buttons[r+1][c-1])) // checks left bottom box
             {
                 buttons[r+1][c-1].mousePressed();
+                System.out.println("checks left bottom box");
             }
             if(buttons[r-1][c].isValid(r-1, c) && (buttons[r-1][c].isClicked()==false) && !bombs.contains(buttons[r-1][c])) // checks top box
             {
                 buttons[r-1][c].mousePressed();
+                System.out.println("checks top box");
             }
             if(buttons[r+1][c].isValid(r+1, c) && (buttons[r+1][c].isClicked()==false) && !bombs.contains(buttons[r+1][c])) // checks bottom box
             {
                 buttons[r+1][c].mousePressed();
+                System.out.println("checks bottom box");
             }
-*/
+
         }
     }
 
@@ -179,7 +187,7 @@ public class MSButton
     public int countBombs(int row, int col)
     {
         int numBombs = 0;
-        //your code here
+
         // checks 8 neighbors around
         for(int r = -1; r <= 1; r++) {
             for(int c = -1; c <= 1; c++) {
@@ -192,34 +200,42 @@ public class MSButton
         if(buttons[row][col+1].isValid(row, col+1) && (bombs.contains(buttons[row][col+1]))) // checks right box
         {
             numBombs++;
+            // System.out.println("checks right box");
         }
         if(buttons[row-1][col+1].isValid(row-1, col+1) && (bombs.contains(buttons[row-1][col+1]))) // checks right top box
         {
             numBombs++;
+            // System.out.println("checks right top box");
         }
         if(buttons[row+1][col+1].isValid(row+1, col+1) && bombs.contains(buttons[row+1][col+1])) // checks right bottom box
         {
             numBombs++;
+            // System.out.println("checks right bottom box");
         }
         if(buttons[row][col-1].isValid(row, col-1) && (bombs.contains(buttons[row][col-1]))) // checks left box
         {
             numBombs++;
+            // System.out.println("checks left box");
         }
         if(buttons[row-1][col-1].isValid(row-1, col-1) && (bombs.contains(buttons[row-1][col-1]))) // checks left top box
         {
             numBombs++;
+            // System.out.println("checks left top box");
         }
         if(buttons[row+1][col-1].isValid(row+1, col-1) && (bombs.contains(buttons[row+1][col-1]))) // checks left bottom box
         {
             numBombs++;
+            // System.out.println("checks left bottom box");
         }
         if(buttons[row-1][col].isValid(row-1, col) && (bombs.contains(buttons[row-1][col]))) // checks top box
         {
             numBombs++;
+            // System.out.println("checks top box");
         }
         if(buttons[row+1][col].isValid(row+1, col) && (bombs.contains(buttons[row+1][col]))) // checks bottom box
         {
             numBombs++;
+            // System.out.println("checks bottom box");
         }
 */
 
