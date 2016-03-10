@@ -105,15 +105,15 @@ public class MSButton
             setLabel(""+countBombs(r,c)); 
         }
         else {
-/*
+
             for(int rr = -1; rr <= 1; rr++) {
                 for(int cc = -1; cc <= 1; cc++) {
-                    if(isValid(r+rr, c+cc) && (buttons[r+rr][c+cc].isClicked()==false) && (bombs.contains(buttons[r+rr][c+cc])==false))
+                    if(isValid(r+rr, c+cc) && (buttons[r+rr][c+cc].isClicked()==false))
                         buttons[r+rr][c+cc].mousePressed();
                 }
             }
-*/
 
+/*
             if(isValid(r, c+1) && (buttons[r][c+1].isClicked()==false) && (bombs.contains(buttons[r][c+1])==false)) // checks right box
             {
                 buttons[r][c+1].mousePressed();                      
@@ -146,7 +146,7 @@ public class MSButton
             {
                 buttons[r+1][c].mousePressed();
             }
-
+*/
         }
     }
 
@@ -171,7 +171,7 @@ public class MSButton
     }
     public boolean isValid(int r, int c)
     {
-        if((r>=0 && r<=height) && (c>=0 && c<=width)) {
+        if((r>=0 && r<NUM_ROWS) && (c>=0 && c<NUM_COLS)) {
             return true;
         }
         return false;
@@ -180,15 +180,15 @@ public class MSButton
     {
         int numBombs = 0;
 
-/*        // checks 8 neighbors around
+        // checks 8 neighbors around
         for(int r = -1; r <= 1; r++) {
             for(int c = -1; c <= 1; c++) {
                 if(isValid(row+r, col+c) && bombs.contains(buttons[row+r][col+c]))
                     numBombs++;
             }
         }
-*/
-        // need check 8 neighbors around --> NEED CONDENSE
+
+/*        // need check 8 neighbors around --> NEED CONDENSE
         if(isValid(row, col+1) && (bombs.contains(buttons[row][col+1]))) // checks right box
         {
             numBombs++;
@@ -229,7 +229,7 @@ public class MSButton
             numBombs++;
             // System.out.println("checks bottom box");
         }
-
+*/
         return numBombs;
     }
 }
