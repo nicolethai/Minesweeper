@@ -1,4 +1,4 @@
-Minesweeper
+ Minesweeper
 ==================
 
 In this assignment you will be recreating the [Microsoft Minesweeper game](http://en.wikipedia.org/wiki/Minesweeper_(video_game)). If you are not familiar with minesweeper you should play the game until you are. You can find one version at [http://minesweeperonline.com/](http://minesweeperonline.com/). You can also try my [slightly easier Minesweeper game](http://simart.github.io/MinesweeperFinished/)
@@ -38,8 +38,7 @@ Suggested steps to completing this assignment:
 		* else if `bombs` contains `this` button display the losing message
 		* else if `countBombs` returns a number of neighboring mines greater than zero, set the label to that number
 		* else recursively call `mousePressed` with the valid, unclicked, neighboring buttons 
-4. Next, finish `public boolean isWon()` which determines if the player has won the game
-5. Then finish `public void displayWinMessage()` which uses `setLabel` to change the labels of the buttons to display a winning message
+ 5. Then finish `public void displayWinMessage()` which uses `setLabel` to change the labels of the buttons to display a winning message
 6. Finally finish `public void displayLosingMessage()` to display the positions of all the bombs as well as a losing message
 
 
