@@ -4,7 +4,7 @@ import de.bezier.guido.*;
 public final int NUM_ROWS = 20, NUM_COLS = 20;
 private MSButton[][] buttons; //2d array of minesweeper buttons
 private ArrayList <MSButton> bombs = new ArrayList <MSButton>(); //ArrayList of just the minesweeper buttons that are mined
-public final int NUM_BOMBS = 5;
+public final int NUM_BOMBS = (int)(Math.random()*20);
 
 void setup ()
 {
@@ -46,7 +46,9 @@ public void draw ()
 public boolean isWon()
 {
     //your code here
-    
+    /*
+        need check: numBombs
+    */
     return false;
 }
 public void displayLosingMessage()
