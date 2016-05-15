@@ -45,16 +45,17 @@ public void draw ()
 }
 public boolean isWon()
 {
-
-    //your code here
-    /*
-        need check: numBombs
-    */
-    return false;
+    for(int r = 0; r < NUM_ROWS; r++){
+        for(int c = 0; c < NUM_COLS; c++){
+            if(bombs.contains(buttons[r][c]) && !buttons[r][c].isMarked())
+                return false;
+        }
+    } 
+    return true; 
 }
 public void displayLosingMessage()
 {
-    //your code here
+    // You Lost
     String loseMessage = "You Lost";
     for(int i = 0; i < loseMessage.length(); i++) {
         buttons[10][6+i].setLabel(loseMessage.substring(i,i+1));
@@ -127,7 +128,6 @@ public class MSButton
 
     public void draw () 
     {    
-        displayWinningMessage();
         if (marked)
             fill(0);
         else if( clicked && bombs.contains(this) ) 
