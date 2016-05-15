@@ -45,6 +45,7 @@ public void draw ()
 }
 public boolean isWon()
 {
+
     //your code here
     /*
         need check: numBombs
@@ -54,10 +55,18 @@ public boolean isWon()
 public void displayLosingMessage()
 {
     //your code here
+    String loseMessage = "You Lost";
+    for(int i = 0; i < loseMessage.length(); i++) {
+        buttons[10][6+i].setLabel(loseMessage.substring(i,i+1));
+    }
 }
 public void displayWinningMessage()
 {
-    //your code here
+    // You Win!
+    String winMessage = "You Win!";
+    for(int i = 0; i < winMessage.length(); i++) {
+        buttons[10][6+i].setLabel(winMessage.substring(i,i+1));
+    }
 }
 
 public class MSButton
@@ -92,7 +101,6 @@ public class MSButton
     public void mousePressed () 
     {
         clicked = true;
-        //your code here
         
         int tf = (int)((Math.random()*2)-1);
         if(keyPressed) {
@@ -119,6 +127,7 @@ public class MSButton
 
     public void draw () 
     {    
+        displayWinningMessage();
         if (marked)
             fill(0);
         else if( clicked && bombs.contains(this) ) 
